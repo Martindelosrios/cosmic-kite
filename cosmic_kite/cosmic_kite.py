@@ -1,3 +1,7 @@
+import os
+
+location = os.path.dirname(os.path.realpath(__file__))
+
 # Decoder loss
 def dec_loss(true, pred):
 
@@ -19,8 +23,8 @@ from pickle import dump
 from pickle import load
 from sklearn import preprocessing
 
-scaler_x = load(open('/home/martin/martin/store1/trabajos/cosmoML/cosmic_kite/data/scaler_x.pkl', 'rb'))
-scaler_y = load(open('/home/martin/martin/store1/trabajos/cosmoML/cosmic_kite/data/scaler_y.pkl', 'rb'))
+scaler_x = load(open(location + '/../data/scaler_x.pkl', 'rb'))
+scaler_y = load(open(location + '/../data/scaler_y.pkl', 'rb'))
 
 # Let's load some neccesary libraries
 from tensorflow.keras.models import Model
@@ -75,7 +79,7 @@ dec_output = decoder(latent)
 enc_output = encoder(inputs)
 vae        = Model(inputs, [enc_output, dec_output], name='vae_mlp')
 
-vae.load_weights('/home/martin/martin/store1/trabajos/cosmoML/cosmic_kite/data/vae_model.h5')
+vae.load_weights(location + '/../data/vae_model.h5')
 
 # Let's define de main functions
 
