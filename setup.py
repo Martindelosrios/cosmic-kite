@@ -9,13 +9,13 @@ setup(
     author_email='martindelosrios13@gmail.com',
     # Needed to actually package something
     packages=['cosmic_kite'],
-    package_dir={'cosmic_kite': 'cosmic_kite'},
+    package_dir={'cosmic_kite': 'src/'},
     # Needed for dependencies
     install_requires=['numpy','tensorflow','scikit-learn'],
     # *strongly* suggested for sharing
     version='0.1',
     description='An example of a python package from pre-existing code',
-    package_data={'cosmic_kite':['/../data/*']},
+    package_data={'cosmic_kite':['data/*']},
     include_package_data=True
     # We will also need a readme eventually (there will be a warning)
     # long_description=open('README.txt').read(),
