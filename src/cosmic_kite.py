@@ -3,7 +3,7 @@ import pkg_resources
 
 location = os.path.dirname(os.path.realpath(__file__))
 data_path = os.path.join(location, 'data')
-print(data_path)
+
 # Decoder loss
 def dec_loss(true, pred):
 
@@ -38,15 +38,15 @@ from tensorflow.keras.layers import Input, Dense, LeakyReLU
 lmin = 50
 lmax = 2500
 actFun = 'LeakyReLU'
-batch_size         = 256
-original_dim       = lmax-lmin
-latent_dim         = 6
+batch_size        = 256
+original_dim      = lmax-lmin
+latent_dim        = 6
 intermediate_dim  = 1000
 intermediate_dim2 = 500
-intermediate_dim3  = 100
-intermediate_dim4  = 50
-epochs             = 100
-epsilon_std        = 1.0
+intermediate_dim3 = 100
+intermediate_dim4 = 50
+epochs            = 100
+epsilon_std       = 1.0
 input_shape = (original_dim,)
 
 # VAE model = encoder + decoder
@@ -85,11 +85,22 @@ vae.load_weights(data_path + '/vae_model.h5')
 
 # Let's define de main functions
 
-def pars2ps(H0, ombh2, omch2, n, tau, As):
-  params  = scaler_y.transform([(ombh2, omch2, H0, n, tau, As)])
-  pred_cl = scaler_x.inverse_transform(decoder.predict(params))[0,:]
-  return pred_cl
+def pars2ps(pars):
+  pars_scaled    = scaler_y.transform(pars)
+  ps_pred_scaled = decoder.predict(pars_scaled)
+  ps_pred        = scaler_x.inverser_transform(ps_pred_scaled)
+  return ps_pred
 
 def ps2pars(ps):
-  pars = scaler_y.inverse_transform(encoder.predict(scaler_x.transform(ps.reshape(1,2450)))[0][0:6])
-  return pars
+  ps_scaled        = scaler_x.transform(ps)
+  pars_pred_scaled = encoder.predict(ps_scaled)
+  pars_pred        = scaler_y.inverse_transform(pars_pred_scaled)
+  return pars_pred  
+#def pars2ps(H0, ombh2, omch2, n, tau, As):
+#  params  = scaler_y.transform([(ombh2, omch2, H0, n, tau, As)])
+#  pred_cl = scaler_x.inverse_transform(decoder.predict(params))[0,:]
+#  return pred_cl
+#
+#def ps2pars(ps):
+#  pars = scaler_y.inverse_transform(encoder.predict(scaler_x.transform(ps.reshape(1,2450)))[0][0:6])
+#  return pars
