@@ -1,7 +1,8 @@
 import os
+import pkg_resources
 
 location = os.path.dirname(os.path.realpath(__file__))
-data_path = os.path.join(os.path.dirname(__file__),'../data')
+data_path = os.path.join(location, 'data')
 print(data_path)
 # Decoder loss
 def dec_loss(true, pred):
