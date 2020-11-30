@@ -1,0 +1,40 @@
+from cosmic_kite import cosmic_kite
+import matplotlib.pyplot as plt
+import camb
+import numpy as np
+
+# Let's compute a fiducal planck spectrum with CAMB
+
+pars = camb.read_ini('/home/martin/Descargas/CAMB/inifiles/planck_2018.ini')
+
+H0_true  = 67.32117
+omb_true = 0.0223828
+omc_true = 0.1201075
+n_true   = 0.9660499
+tau_true = 0.05430842
+As_true  = 2.100549e-9
+
+#calculate results for these parameters
+pars.set_cosmology(H0 = H0_true, ombh2 = omb_true, omch2 = omc_true, tau = tau_true)
+pars.InitPower.set_params(As = As_true, ns = n_true)
+results = camb.get_results(pars)
+
+#get dictionary of CAMB power spectra
+powers  = results.get_cmb_power_spectra(pars, CMB_unit='muK')
+camb_ps = powers['total'][50:2500,0]
+l = np.arange(50,2500)
+
+
+ps = cosmic_kite.pars2ps(H0_true, omb_true, omc_true, n_true, tau_true, As_true)
+
+fig, axs = plt.subplots(2, 1, sharex=True, gridspec_kw={'hspace': 0.05, 'wspace': 0.})
+axs[0].plot(camb_ps, label = 'CAMB')
+axs[0].plot(ps, label = 'Cosmic-kite', linestyle = ':')
+axs[0].legend()
+axs[0].set(ylabel = r'$D_{l}$')
+
+axs[1].plot(camb_ps-ps, label = 'CAMB - Cosmic-kite')
+axs[1].legend()
+axs[1].set(ylabel = r'$D_{l,CAMB}-D_{l,CK}$')
+axs[1].set(xlabel = 'l')
+plt.show()

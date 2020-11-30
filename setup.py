@@ -10,7 +10,7 @@ setup(
     # Needed to actually package something
     packages=['cosmic_kite'],
     # Needed for dependencies
-    install_requires=['numpy','tensorflow'],
+    install_requires=['numpy','tensorflow','scikit-learn'],
     # *strongly* suggested for sharing
     version='0.1',
     description='An example of a python package from pre-existing code',
