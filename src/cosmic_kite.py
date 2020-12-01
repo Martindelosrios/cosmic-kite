@@ -88,7 +88,7 @@ vae.load_weights(data_path + '/vae_model.h5')
 def pars2ps(pars):
   pars_scaled    = scaler_y.transform(pars)
   ps_pred_scaled = decoder.predict(pars_scaled)
-  ps_pred        = scaler_x.inverser_transform(ps_pred_scaled)
+  ps_pred        = scaler_x.inverse_transform(ps_pred_scaled)
   return ps_pred
 
 def ps2pars(ps):
