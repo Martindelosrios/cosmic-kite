@@ -24,8 +24,10 @@ powers  = results.get_cmb_power_spectra(pars, CMB_unit='muK')
 camb_ps = powers['total'][50:2500,0]
 l = np.arange(50,2500)
 
+true_pars = np.array([omb_true, omc_true, H0_true, n_true, tau_true, As_true]).reshape(1,-1)
 
-ps = cosmic_kite.pars2ps(H0_true, omb_true, omc_true, n_true, tau_true, As_true)
+# The input of the pars2ps function must be an array of shape (n, 6) where n is the number of cosmological models to be computed
+ps = cosmic_kite.pars2ps(true_pars)[0]
 
 fig, axs = plt.subplots(2, 1, sharex=True, gridspec_kw={'hspace': 0.05, 'wspace': 0.})
 axs[0].plot(camb_ps, label = 'CAMB')

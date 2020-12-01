@@ -24,7 +24,9 @@ powers  = results.get_cmb_power_spectra(pars, CMB_unit='muK')
 camb_ps = powers['total'][50:2500,0]
 l = np.arange(50,2500)
 
-pred_pars = cosmic_kite.ps2pars(camb_ps)
+# The input of the ps2pars function must be an array of shape (n, 2450) where n is the number of cosmological models to be computed
+
+pred_pars = cosmic_kite.ps2pars(camb_ps.reshape(1,-1))[0]
 rel_diff = ([omb, omc, H0, n, tau, As] - pred_pars)/[omb, omc, H0, n, tau, As]
 
 plt.scatter(['omb', 'omc', 'H0', 'n', 'tau', 'As'],rel_diff)
