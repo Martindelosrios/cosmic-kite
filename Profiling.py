@@ -42,8 +42,7 @@ print(f'CAMB took {camb_end - camb_start} seconds to compute the PS for ', nran,
 
 ck_start = time()
 
-for i in range(nran):
-  ps = cosmic_kite.pars2ps(H0_true, omb_true, omc_true, n_true, tau_true, As_true)
+ps = cosmic_kite.pars2ps(params)
 
 ck_end = time()
 print(f'Cosmic-kite took {ck_end - ck_start} seconds to compute the PS for ',nran,' random cosmologies!')
