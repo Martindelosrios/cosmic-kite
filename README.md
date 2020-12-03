@@ -48,3 +48,7 @@ Now, let's estimate the maximum-likelihood parameters from a giver power spectra
 pred_pars = cosmic_kite.ps2pars(ps.reshape(1,-1))[0]
 
 ```
+
+Fore more examples please go to (https://github.com/Martindelosrios/cosmic-kite/tree/main/Examples).
+
+If you want to reproduce the figures of xxxx.xxxxx please go to (https://github.com/Martindelosrios/cosmic-kite/tree/main/Examples/Figures.ipynb).
