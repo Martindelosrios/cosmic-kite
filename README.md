@@ -59,5 +59,4 @@ If you use this code please cite XXXX.XXXXX and refer to  this website.
 
 # Authors
 
-Martín de los Rios. Posdoc fellow @ICTP-SAIFR. href="https://orcid.org/0000-0003-2190-2196" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"> <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon"></a>
-
+Martín de los Rios. Posdoc fellow @ICTP-SAIFR.  <a itemprop="sameAs"  href="https://orcid.org/0000-0003-2190-2196" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"> <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon"></a>
