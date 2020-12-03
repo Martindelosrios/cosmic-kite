@@ -11,7 +11,7 @@ setup(
     packages=['cosmic_kite'],
     package_dir={'cosmic_kite': 'src/'},
     # Needed for dependencies
-    install_requires=['numpy','tensorflow','scikit-learn'],
+    install_requires=['numpy','tensorflow','scikit-learn==0.22.2.post1'],
     # *strongly* suggested for sharing
     version='0.1',
     description='An example of a python package from pre-existing code',
