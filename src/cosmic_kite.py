@@ -1,5 +1,6 @@
 import os
 import pkg_resources
+import numpy as np
 
 location = os.path.dirname(os.path.realpath(__file__))
 data_path = os.path.join(location, 'data')
