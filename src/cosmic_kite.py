@@ -89,7 +89,8 @@ def pars2ps(pars):
   pars_scaled    = scaler_y.transform(pars)
   ps_pred_scaled = decoder.predict(pars_scaled)
   ps_pred        = scaler_x.inverse_transform(ps_pred_scaled)
-  return ps_pred
+	ell_array = np.arange ([lmin, lmax+1,1])
+  return ps_pred, ell_array
 
 def ps2pars(ps):
   ps_scaled        = scaler_x.transform(ps)
