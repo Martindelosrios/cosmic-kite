@@ -36,8 +36,8 @@ from tensorflow.keras.layers import Input, Dense, LeakyReLU
 # Let's define the architecture and load the trained values
 
 # Armo los tensores input
-lmin = 50
-lmax = 2500
+lmin = 2
+lmax = 2650
 actFun = 'LeakyReLU'
 batch_size        = 256
 original_dim      = lmax-lmin
