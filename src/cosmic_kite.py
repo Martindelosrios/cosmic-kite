@@ -5,29 +5,12 @@ import numpy as np
 location = os.path.dirname(os.path.realpath(__file__))
 data_path = os.path.join(location, 'data')
 
-# Decoder loss
-def dec_loss(true, pred):
-
-  factor   = tf.range(lmin, lmax, dtype = 'float32')
-  factor   = 2*factor + 1
-  multiply = tf.reshape(tf.shape(true)[0], (1,))
-  factor   = tf.reshape(tf.tile(factor, multiply), [ multiply[0], tf.shape(factor)[0]])
-
-  aux0 = K.log(K.abs(true/pred))
-  aux1 = (pred/true)
-  aux  = factor*(aux0 + aux1 - 1)
-
-  loss = K.sum(aux, axis = 0)
-
-  return K.mean(loss)
-
 # Let's load the scaler
-from pickle import dump
 from pickle import load
 from sklearn import preprocessing
 
-scaler_x = load(open(data_path + '/scaler_x.pkl', 'rb'))
-scaler_y = load(open(data_path + '/scaler_y.pkl', 'rb'))
+scaler_x = load(open(data_path + '/scaler_x_3ch.pkl', 'rb'))
+scaler_y = load(open(data_path + '/scaler_y_3ch.pkl', 'rb'))
 
 # Let's load some neccesary libraries
 from tensorflow.keras.models import Model
@@ -40,7 +23,7 @@ lmin = 2
 lmax = 2650
 actFun = 'LeakyReLU'
 batch_size        = 256
-original_dim      = lmax-lmin
+original_dim      = 3*(lmax-lmin)
 latent_dim        = 6
 intermediate_dim  = 1000
 intermediate_dim2 = 500
@@ -82,7 +65,7 @@ dec_output = decoder(latent)
 enc_output = encoder(inputs)
 vae        = Model(inputs, [enc_output, dec_output], name='vae_mlp')
 
-vae.load_weights(data_path + '/vae_model.h5')
+vae.load_weights(data_path + '/3ch_model.h5')
 
 # Let's define de main functions
 
@@ -96,8 +79,11 @@ def pars2ps(pars):
   pars_scaled    = scaler_y.transform(pars)
   ps_pred_scaled = decoder.predict(pars_scaled)
   ps_pred        = scaler_x.inverse_transform(ps_pred_scaled)
+  tt_pred        = ps_pred[:,0:(lmax-lmin)]
+  ee_pred        = ps_pred[:,(lmax-lmin):2*(lmax-lmin)]
+  te_pred        = ps_pred[:,2*(lmax-lmin):3*(lmax-lmin)]
   ell_array      = np.arange(lmin, lmax)
-  return [ps_pred, ell_array]
+  return [tt_pred, ee_pred, te_pred, ell_array]
 
 
 def ps2pars(ps):
