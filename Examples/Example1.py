@@ -30,7 +30,7 @@ l       = np.arange(2,2650)
 true_pars = np.array([omb_true, omc_true, H0_true, n_true, tau_true, As_true]).reshape(1,-1)
 
 # The input of the pars2ps function must be an array of shape (n, 6) where n is the number of cosmological models to be computed
-ps = pars2ps(true_pars)
+ps = cosmic_kite.pars2ps(true_pars)
 tt_pred = ps[0][0]
 ee_pred = ps[1][0]
 te_pred = ps[2][0]
