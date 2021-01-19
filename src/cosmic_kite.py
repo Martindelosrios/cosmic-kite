@@ -9,8 +9,8 @@ data_path = os.path.join(location, 'data')
 from pickle import load
 from sklearn import preprocessing
 
-scaler_x = load(open(data_path + '/scaler_x_3ch.pkl', 'rb'))
-scaler_y = load(open(data_path + '/scaler_y_3ch.pkl', 'rb'))
+scaler_x = load(open(data_path + '/scaler_x.pkl', 'rb'))
+scaler_y = load(open(data_path + '/scaler_y.pkl', 'rb'))
 
 # Let's load some neccesary libraries
 from tensorflow.keras.models import Model
