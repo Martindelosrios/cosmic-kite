@@ -65,7 +65,7 @@ dec_output = decoder(latent)
 enc_output = encoder(inputs)
 vae        = Model(inputs, [enc_output, dec_output], name='vae_mlp')
 
-vae.load_weights(data_path + '/3ch_model.h5')
+vae.load_weights(data_path + '/vae_model.h5')
 
 # Let's define de main functions
 
