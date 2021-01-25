@@ -23,7 +23,7 @@ lmin = 2
 lmax = 2650
 actFun = 'LeakyReLU'
 batch_size        = 256
-original_dim      = 3*(lmax-lmin)
+original_dim      = 1*(lmax-lmin)
 latent_dim        = 6
 intermediate_dim  = 1000
 intermediate_dim2 = 500
@@ -80,8 +80,6 @@ def pars2ps(pars):
   ps_pred_scaled = decoder.predict(pars_scaled)
   ps_pred        = scaler_x.inverse_transform(ps_pred_scaled)
   tt_pred        = ps_pred[:,0:(lmax-lmin)]
-  ee_pred        = ps_pred[:,(lmax-lmin):2*(lmax-lmin)]
-  te_pred        = ps_pred[:,2*(lmax-lmin):3*(lmax-lmin)]
   ell_array      = np.arange(lmin, lmax)
   return [tt_pred, ee_pred, te_pred, ell_array]
 
