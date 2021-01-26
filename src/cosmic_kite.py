@@ -81,7 +81,7 @@ def pars2ps(pars):
   ps_pred        = scaler_x.inverse_transform(ps_pred_scaled)
   tt_pred        = ps_pred[:,0:(lmax-lmin)]
   ell_array      = np.arange(lmin, lmax)
-  return [tt_pred, ee_pred, te_pred, ell_array]
+  return [tt_pred, ell_array]
 
 
 def ps2pars(ps):
