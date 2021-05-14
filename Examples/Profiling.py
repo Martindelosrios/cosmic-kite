@@ -22,11 +22,11 @@ n_sigma   = 0.0057
 tau_sigma = 0.008
 As_sigma  = 0.034e-9
 
-# Let's choose 100 random cosmologies around planck values
+# Let's choose 1000 random cosmologies around planck values
 nran = 1000
 params = np.random.normal(loc = [omb_true, omc_true, H0_true, n_true, tau_true, As_true], scale = [omb_sigma, omc_sigma, H0_sigma, n_sigma, tau_sigma, As_sigma],size = (nran, 6))
 
-# Let's measure the time to compute 100 spectra with CAMB
+# Let's measure the time to compute 1000 spectra with CAMB
 camb_start = time()
 
 for i in range(nran):
@@ -38,7 +38,17 @@ for i in range(nran):
 camb_end = time()
 print(f'CAMB took {camb_end - camb_start} seconds to compute the PS for ', nran, ' random cosmologies!')
 
-# Let's measure the time to compute 100 spectra with Cosmic-kite
+# Let's measure the time to compute 1000 spectra with Cosmic-kite in a loop
+
+ck_start = time()
+for i in range(nran):
+  ps = cosmic_kite.pars2ps(params[i,:].reshape(1, -1))
+
+ck_end = time()
+print(f'Cosmic-kite took {ck_end - ck_start} seconds to compute the power spectra for ',nran,' random cosmologies in loop mode!')
+print('This is ' + str( (camb_end - camb_start) / (ck_end - ck_start) ) + ' faster than CAMB')
+
+# Let's measure the time to compute 1000 spectra with Cosmic-kite
 
 ck_start = time()
 
@@ -46,4 +56,5 @@ ps = cosmic_kite.pars2ps(params)
 
 ck_end = time()
 print(f'Cosmic-kite took {ck_end - ck_start} seconds to compute the PS for ',nran,' random cosmologies!')
+print('This is ' + str( (camb_end - camb_start) / (ck_end - ck_start) ) + ' faster than CAMB')
 
