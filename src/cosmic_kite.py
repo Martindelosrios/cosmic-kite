@@ -146,12 +146,12 @@ vae_TE.load_weights(data_path + '/vae_model_TE.h5')
 # Let's define de main functions
 
 def pars2ps(pars):
-  if ((np.max(pars[:,0]) > 0.023482) or (np.min(pars[:,0]) < 0.021282)): print('WARNING! Some values of omega_b*h2 are outside the training range')
-  if ((np.max(pars[:,1]) > 0.130607) or (np.min(pars[:,1]) < 0.109607)): print('WARNING! Some values of omega_c*h2 are outside the training range')
-  if ((np.max(pars[:,2]) > 76.52) or (np.min(pars[:,2]) < 58.121)): print('WARNING! Some values of H0 are outside the training range')
-  if ((np.max(pars[:,3]) > 0.99454) or (np.min(pars[:,3]) < 0.937550)): print('WARNING! Some values of n are outside the training range')
-  if ((np.max(pars[:,4]) > 0.094) or (np.min(pars[:,4]) < 0.01430)): print('WARNING! Some values of tau are outside the training range')
-  if ((np.max(pars[:,5]) > 2.2705e-9) or (np.min(pars[:,5]) < 1.9305e-9)): print('WARNING! Some values of As are outside the training range')
+  #if ((np.max(pars[:,0]) > 0.023482) or (np.min(pars[:,0]) < 0.021282)): print('WARNING! Some values of omega_b*h2 are outside the training range')
+  #if ((np.max(pars[:,1]) > 0.130607) or (np.min(pars[:,1]) < 0.109607)): print('WARNING! Some values of omega_c*h2 are outside the training range')
+  #if ((np.max(pars[:,2]) > 76.52) or (np.min(pars[:,2]) < 58.121)): print('WARNING! Some values of H0 are outside the training range')
+  #if ((np.max(pars[:,3]) > 0.99454) or (np.min(pars[:,3]) < 0.937550)): print('WARNING! Some values of n are outside the training range')
+  #if ((np.max(pars[:,4]) > 0.094) or (np.min(pars[:,4]) < 0.01430)): print('WARNING! Some values of tau are outside the training range')
+  #if ((np.max(pars[:,5]) > 2.2705e-9) or (np.min(pars[:,5]) < 1.9305e-9)): print('WARNING! Some values of As are outside the training range')
   pars_scaled    = scaler_y_TT.transform(pars)
   ell_array      = np.arange(lmin, lmax)
   tt_pred_scaled = decoder_TT.predict(pars_scaled)
