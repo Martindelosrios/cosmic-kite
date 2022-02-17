@@ -51,12 +51,12 @@ pred_pars = cosmic_kite.ps2pars(ps.reshape(1,-1))[0]
 
 Fore more examples please go to https://github.com/Martindelosrios/cosmic-kite/tree/main/Examples.
 
-If you want to reproduce the figures of xxxx.xxxxx please go to https://github.com/Martindelosrios/cosmic-kite/tree/main/Examples/Figures.ipynb.
+If you want to reproduce the figures of 2202.05853 please go to https://github.com/Martindelosrios/cosmic-kite/tree/main/Examples/Figures.ipynb.
 
 # Citation
 
-If you use this code please cite XXXX.XXXXX and refer to  this website.
+If you use this code please cite 2202.05853 and refer to  this website.
 
 # Authors
 
-Martín de los Rios. Posdoc fellow @ICTP-SAIFR.  <a itemprop="sameAs"  href="https://orcid.org/0000-0003-2190-2196" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"> <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon"></a>
+Martín de los Rios. Posdoctoral Resarcher @IFT/UAM.  <a itemprop="sameAs"  href="https://orcid.org/0000-0003-2190-2196" target="orcid.widget" rel="noopener noreferrer" style="vertical-align:top;"> <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" style="width:1em;margin-right:.5em;" alt="ORCID iD icon"></a>
