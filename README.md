@@ -3,7 +3,7 @@
 
 Cosmic-kite is a python software for the fast estimation of the TT Cosmic Microwave Background (CMB) power spectra corresponding to a set of cosmological parameters (using the function ```pars2ps```) or to estimate the maximum-likelihood cosmological parameters from a power spectra. (using the function ```ps2pars```).
 
-This software is an auto-encoder that was trained and calibrated using power spectra from random cosmologies computed with the CAMB code. Fore more details please read XXXX.XXXXX
+This software is an auto-encoder that was trained and calibrated using power spectra from random cosmologies computed with the CAMB code. Fore more details please read https://arxiv.org/abs/2202.05853
 
 # Installation
 
